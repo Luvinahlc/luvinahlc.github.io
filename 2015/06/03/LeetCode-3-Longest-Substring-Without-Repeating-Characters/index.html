@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>LeetCode 3 Longest Substring Without Repeating Characters | Luvinahlc&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题描述Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for “abcabcbb” is “abc”, which the length is 3.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 3 Longest Substring Without Repeating Characters">
+<meta property="og:url" content="http://yoursite.com/2015/06/03/LeetCode-3-Longest-Substring-Without-Repeating-Characters/index.html">
+<meta property="og:site_name" content="Luvinahlc's Blog">
+<meta property="og:description" content="问题描述Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for “abcabcbb” is “abc”, which the length is 3.">
+<meta property="og:image" content="http://7xjh1l.com1.z0.glb.clouddn.com/Longest Substring Without Repeating CharactersLongest Substring Without Repeating Characters.PNG">
+<meta property="og:updated_time" content="2015-06-03T13:52:54.343Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode 3 Longest Substring Without Repeating Characters">
+<meta name="twitter:description" content="问题描述Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for “abcabcbb” is “abc”, which the length is 3.">
+  
+    <link rel="alternative" href="/atom.xml" title="Luvinahlc&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  
+<script type="text/javascript">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?672515e63bd6f633681d1735d2b9190a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="http://img5q.duitang.com/uploads/item/201410/02/20141002004718_cNaAM.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Luvina</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories">分类</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Luvinahlc" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1753184915?wvr=3.6&lf=reg" title="weibo">weibo</a>
+					        
+								<a class="facebook" target="_blank" href="http://facebook.com/Luvinahlc" title="facebook">facebook</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/关联容器/" style="font-size: 10px;">关联容器</a> <a href="/tags/单链表/" style="font-size: 10px;">单链表</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/杂絮/" style="font-size: 10px;">杂絮</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://eclipseflower.github.io/">EclipseFlower&#39;s Blog</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://6carol6.github.io/">Carolz&#39;s Blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">M.Sc. Student of Department of Computer Science and Technology in Nanjing University</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Luvina</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://img5q.duitang.com/uploads/item/201410/02/20141002004718_cNaAM.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Luvina</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories">分类</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Luvinahlc" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1753184915?wvr=3.6&lf=reg" title="weibo">weibo</a>
+			        
+						<a class="facebook" target="_blank" href="http://facebook.com/Luvinahlc" title="facebook">facebook</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-LeetCode-3-Longest-Substring-Without-Repeating-Characters" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/03/LeetCode-3-Longest-Substring-Without-Repeating-Characters/" class="article-date">
+  	<time datetime="2015-06-03T13:52:07.000Z" itemprop="datePublished">2015-06-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode 3 Longest Substring Without Repeating Characters
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符串/">字符串</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Online-Judge/">Online Judge</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="问题描述">问题描述</h1><p>Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for “abcabcbb” is “abc”, which the length is 3. For “bbbbb” the longest substring is “b”, with the length of 1.<br><a id="more"></a></p>
+<h1 id="问题分析与思路">问题分析与思路</h1><p>&emsp;&emsp;一开始看题的时候，我又错误的理解了题目的意思（汗(⊙﹏⊙)b，感觉我看题意会容易理解错），后来了看了别人的解释，觉得下面这张图来表示题意是最好不过的了。<br><img src="http://7xjh1l.com1.z0.glb.clouddn.com/Longest Substring Without Repeating CharactersLongest Substring Without Repeating Characters.PNG" alt="不含重复字符的最长子串"><br>&emsp;&emsp;从左往右扫描，当遇到重复字母时，以上一个重复字母的 index+1，作为新的搜索起始位置，直到最后一个字母，复杂度是 O(n)。</p>
+<h1 id="问题求解">问题求解</h1><p>&emsp;&emsp;C++的解决方案：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span> (index &lt; s.size()) &#123;</span><br><span class="line">			<span class="built_in">string</span> subString = <span class="string">""</span>;</span><br><span class="line">			<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">while</span> ((index + i &lt; s.size()) &amp;&amp; subString.find(s[index + i]) == subString.npos) &#123;</span><br><span class="line">				subString += s[index + i];</span><br><span class="line">				i++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (index + i &lt; s.size()) &#123;</span><br><span class="line">				index += subString.find(s[index + i]);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (subString.size() &gt; length) &#123;</span><br><span class="line">				length = subString.size();</span><br><span class="line">			&#125;</span><br><span class="line">			index++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;从string s的第一个字符开始往后遍历，若这个字符没有在子串中出现，则加入子串，若出现过则从这个出现过的字符的后一个字符开始继续遍历，比较没有重复的子串的长度，获得最长的子串长度。<br>&emsp;&emsp;附上网上别人写的解决方案，整体的思路是差不多的，写法不太一样，感觉比较简洁，用了一个数组来记录每个字符上次出现的位置，我想了一下，如果出现了非a~z的字符，感觉这个写法就有一丢丢问题了。可以学习：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度 O(n)，空间复杂度 O(1)</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">const</span> <span class="keyword">int</span> ASCII_MAX = <span class="number">26</span>;</span><br><span class="line">		<span class="keyword">int</span> last[ASCII_MAX]; <span class="comment">// 记录字符上次出现过的位置</span></span><br><span class="line">		<span class="keyword">int</span> start = <span class="number">0</span>; <span class="comment">// 记录当前子串的起始位置</span></span><br><span class="line">		fill(last, last + ASCII_MAX, -<span class="number">1</span>); <span class="comment">// 0 也是有效位置，因此初始化为-1</span></span><br><span class="line">		<span class="keyword">int</span> max_len = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (last[s[i] - <span class="string">'a'</span>] &gt;= start) &#123;</span><br><span class="line">				max_len = max(i - start, max_len);</span><br><span class="line">				start = last[s[i] - <span class="string">'a'</span>] + <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			last[s[i] - <span class="string">'a'</span>] = i;</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">return</span> max((<span class="keyword">int</span>)s.size() - start, max_len); <span class="comment">// 别忘了最后一次，例如"abcd"</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="相关知识点总结">相关知识点总结</h1><h2 id="C++中string的用法">C++中string的用法</h2><h3 id="string的特性描述">string的特性描述</h3><p>&emsp;&emsp;int capacity()const;    //返回当前容量（即string中不必增加内存即可存放的元素个数）<br>&emsp;&emsp;int max_size()const;    //返回string对象中可存放的最大字符串的长度<br>&emsp;&emsp;int size()const;        //返回当前字符串的大小<br>&emsp;&emsp;int length()const;       //返回当前字符串的长度<br>&emsp;&emsp;bool empty()const;        //当前字符串是否为空<br>&emsp;&emsp;void resize(int len,char c);//把字符串当前大小置为len，并用字符c填充不足的部分</p>
+<h3 id="string的子串">string的子串</h3><p>&emsp;&emsp;string substr(int pos = 0,int n = npos) const;//返回pos开始的n个字符组成的字符串</p>
+<h3 id="string类的查找函数">string类的查找函数</h3><p>&emsp;&emsp;int find(char c, int pos = 0) const;//从pos开始查找字符c在当前字符串的位置<br>&emsp;&emsp;int find(const char *s, int pos = 0) const;//从pos开始查找字符串s在当前串中的位置<br>&emsp;&emsp;int find(const char *s, int pos, int n) const;//从pos开始查找字符串s中前n个字符在当前串中的位置<br>&emsp;&emsp;int find(const string &amp;s, int pos = 0) const;//从pos开始查找字符串s在当前串中的位置<br>&emsp;&emsp;//查找成功时返回所在位置，失败返回string::npos的值 </p>
+<p>&emsp;&emsp;<strong>更多更具体的可以参见<a href="http://www.cnblogs.com/xFreedom/archive/2011/05/16/2048037.html" target="_blank" rel="external">标准C++中的string类的用法总结</a>，当然也可以持续关注我的博客，总有一天我也要好好总结一下~</strong></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/06/03/LeetCode-2-Add-Two-Numbers/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode 2 Add Two Numbers</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="LeetCode-3-Longest-Substring-Without-Repeating-Characters" data-title="LeetCode 3 Longest Substring Without Repeating Characters" data-url="http://yoursite.com/2015/06/03/LeetCode-3-Longest-Substring-Without-Repeating-Characters/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Luvina
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?672515e63bd6f633681d1735d2b9190a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+</body>
+</html>
