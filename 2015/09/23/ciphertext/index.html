@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>小练习：解密文件 | Luvinahlc&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="&amp;emsp;&amp;emsp;这学期在当程序设计基础实验的助教，也当是让自己复习一下C++编程吧，正好随着这些题将一些基本的知识点复习一下。第二次课程做的是下面这道题：
+题目&amp;emsp;&amp;emsp;文本文件“ciphertext.txt”：&amp;emsp;&amp;emsp;wN(+2!Iw)6.-0)Bw.)2!$%#.w)6w3wN(+2!’w(%%06.0)wv&amp;emsp;&amp;emsp;该文件为加密文件，是原">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小练习：解密文件">
+<meta property="og:url" content="http://yoursite.com/2015/09/23/ciphertext/index.html">
+<meta property="og:site_name" content="Luvinahlc's Blog">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;这学期在当程序设计基础实验的助教，也当是让自己复习一下C++编程吧，正好随着这些题将一些基本的知识点复习一下。第二次课程做的是下面这道题：
+题目&amp;emsp;&amp;emsp;文本文件“ciphertext.txt”：&amp;emsp;&amp;emsp;wN(+2!Iw)6.-0)Bw.)2!$%#.w)6w3wN(+2!’w(%%06.0)wv&amp;emsp;&amp;emsp;该文件为加密文件，是原">
+<meta property="og:updated_time" content="2015-09-23T09:14:01.087Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小练习：解密文件">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;这学期在当程序设计基础实验的助教，也当是让自己复习一下C++编程吧，正好随着这些题将一些基本的知识点复习一下。第二次课程做的是下面这道题：
+题目&amp;emsp;&amp;emsp;文本文件“ciphertext.txt”：&amp;emsp;&amp;emsp;wN(+2!Iw)6.-0)Bw.)2!$%#.w)6w3wN(+2!’w(%%06.0)wv&amp;emsp;&amp;emsp;该文件为加密文件，是原">
+  
+    <link rel="alternative" href="/atom.xml" title="Luvinahlc&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  
+<script type="text/javascript">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?672515e63bd6f633681d1735d2b9190a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="http://img5q.duitang.com/uploads/item/201410/02/20141002004718_cNaAM.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Luvina</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories">分类</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Luvinahlc" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1753184915?wvr=3.6&lf=reg" title="weibo">weibo</a>
+					        
+								<a class="facebook" target="_blank" href="http://facebook.com/Luvinahlc" title="facebook">facebook</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Exercise/" style="font-size: 10px;">Exercise</a> <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/仙剑奇侠传6/" style="font-size: 10px;">仙剑奇侠传6</a> <a href="/tags/关联容器/" style="font-size: 10px;">关联容器</a> <a href="/tags/单链表/" style="font-size: 10px;">单链表</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/数据仓库/" style="font-size: 10px;">数据仓库</a> <a href="/tags/杂絮/" style="font-size: 10px;">杂絮</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://eclipseflower.github.io/">EclipseFlower&#39;s Blog</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://6carol6.github.io/">Carolz&#39;s Blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">M.Sc. Student of Department of Computer Science and Technology in Nanjing University</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Luvina</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://img5q.duitang.com/uploads/item/201410/02/20141002004718_cNaAM.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Luvina</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories">分类</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Luvinahlc" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1753184915?wvr=3.6&lf=reg" title="weibo">weibo</a>
+			        
+						<a class="facebook" target="_blank" href="http://facebook.com/Luvinahlc" title="facebook">facebook</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-ciphertext" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/23/ciphertext/" class="article-date">
+  	<time datetime="2015-09-23T09:09:51.000Z" itemprop="datePublished">2015-09-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      小练习：解密文件
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Exercise/">Exercise</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&emsp;&emsp;这学期在当程序设计基础实验的助教，也当是让自己复习一下C++编程吧，正好随着这些题将一些基本的知识点复习一下。第二次课程做的是下面这道题：</p>
+<h1 id="题目">题目</h1><p>&emsp;&emsp;文本文件“ciphertext.txt”：<br>&emsp;&emsp;wN(+2!Iw)6.-0)Bw.)2!$%#.w)6w3wN(+2!’w(%%0<em>6.</em>0)wv<br>&emsp;&emsp;该文件为加密文件，是原文通过下面的步骤生成：<br>&emsp;&emsp;原文为一行英文句子，用字符数组存放；<br>&emsp;&emsp;加密步骤1：用一个水仙花数-原英文中的每个字符，构成新的字符数组；<br>&emsp;&emsp;加密步骤2：新数组中的相邻两个字符交换位置，即：下标[0]-[1]交换，下标[2]-[3]交换，以此类推。<br>&emsp;&emsp;加密步骤3：将加密后的字符数组输出到文件“ciphertext.txt”<br>&emsp;&emsp;实验输出要求：将ciphertext.txt的解密结果输出到屏幕上。<br>&emsp;&emsp;提示：水仙花数是指一个 n 位数 ( n≥3 )，它的每个位上的数字的 n 次幂之和等于它本身，本题中的水仙花数是3位整数。<br><a id="more"></a></p>
+<h1 id="分析与思路">分析与思路</h1><p>&emsp;&emsp;这道题没什么太大的难度，就是按照加密的过程一步一步反过来解密，只是有一些基本的C++的知识可能会忘记了。</p>
+<h1 id="C++的解决方案：">C++的解决方案：</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;fstream&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isNarcissisticNumber</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> hundreds = num / <span class="number">100</span>;</span><br><span class="line">	<span class="keyword">int</span> tens = num % <span class="number">100</span> / <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">int</span> ones = num % <span class="number">10</span>;</span><br><span class="line">	<span class="keyword">if</span> (hundreds*hundreds*hundreds + tens*tens*tens + ones*ones*ones == num)</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">/*文件读写操作*/</span></span><br><span class="line">	<span class="function">ifstream <span class="title">in_file</span><span class="params">("d:\\ciphertext.txt", ios::in)</span></span>;</span><br><span class="line">	<span class="keyword">if</span> (!in_file)	<span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">char</span> ciphertext[<span class="number">100</span>] = <span class="string">""</span>;  <span class="comment">//字符数组最好要初始化</span></span><br><span class="line">	in_file.getline(ciphertext, <span class="number">100</span>);  <span class="comment">//这里不能用in_file &gt;&gt; ciphertext，因为提取符会忽略空格</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ciphertext &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="built_in">strlen</span>(ciphertext) / <span class="number">2</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">char</span> temp = ciphertext[i * <span class="number">2</span> + <span class="number">1</span>];</span><br><span class="line">		ciphertext[i * <span class="number">2</span> + <span class="number">1</span>] = ciphertext[i * <span class="number">2</span>];</span><br><span class="line">		ciphertext[i * <span class="number">2</span>] = temp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ciphertext &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">100</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (isNarcissisticNumber(i)) &#123;</span><br><span class="line">			<span class="keyword">char</span> originalText[<span class="number">100</span>] = <span class="string">""</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="built_in">strlen</span>(ciphertext); j++) &#123;</span><br><span class="line">				originalText[j] = i - ciphertext[j];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; originalText &lt;&lt; endl;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="相关知识点总结">相关知识点总结</h1><h2 id="水仙花数">水仙花数</h2><p>&emsp;&emsp;水仙花数是指一个 n 位数 ( n≥3 )，它的每个位上的数字的 n 次幂之和等于它本身。（例如：1^3 + 5^3+ 3^3 = 153）<br>&emsp;&emsp;三位的水仙花数共有4个：<strong>153，370，371，407；</strong><br>&emsp;&emsp;四位的四叶玫瑰数共有3个：<strong>1634，8208，9474；</strong><br>&emsp;&emsp;五位的五角星数共有3个：<strong>54748，92727，93084；</strong><br>&emsp;&emsp;六位的六合数只有1个：<strong>548834；</strong></p>
+<h2 id="ASCII码">ASCII码</h2><p>&emsp;&emsp;ASCII码大致可以分作三部分组成。<br>&emsp;&emsp;第一部分是：ASCII非打印控制字符，ASCII表上的数字0–31分配给了控制字符，用于控制像打印机等一些外围设备。<br>&emsp;&emsp;第二部分是：ASCII打印字符，数字 32–126 分配给了能在键盘上找到的字符，当您查看或打印文档时就会出现，数字127代表 DELETE 命令。其中30~39代表0~9，41~90代表A~Z，97~122代表a~z。<br>&emsp;&emsp;第三部分是：扩展ASCII打印字符，扩展的ASCII字符满足了对更多字符的需求。扩展的ASCII包含ASCII中已有的128个字符（数字0–32显示在下图中），又增加了128个字符，总共是256个。</p>
+<h2 id="C++文件读写操作">C++文件读写操作</h2><h3 id="基于函数库的文件I/O">基于函数库的文件I/O</h3><p>&emsp;&emsp;从C语言标准库保留下来的输入/输出函数库中包含了对文件进行输入/输出操作的函数。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstdio&gt;  <span class="comment">//或 #include &lt;stdio.h&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h4 id="(1)打开文件">(1)打开文件</h4><p>&emsp;&emsp;使用函数fopen来实现：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FILE *fopen(<span class="keyword">const</span> <span class="keyword">char</span> *filename, <span class="keyword">const</span> <span class="keyword">char</span> *mode);  <span class="comment">//打开文件</span></span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;filename是文件名，mode表示打开方式，有如下几种：<br>&emsp;&emsp;”w”——打开一个外部文件用于写操作，如果外部文件已存在，则首先把它的内容清除，否则先创建该外部文件。文件指针指向文件的头。<br>&emsp;&emsp;”a”——打开一个外部文件用于添加（从文件末尾）操作，如果外部文件不存在，则先创建该外部文件。文件指针指向文件的尾。<br>&emsp;&emsp;”r”——打开一个外部文件用于读操作，外部文件必须存在，否则打开文件失败。<br>&emsp;&emsp;如果文件打开失败，则函数fopen返回空指针，例如：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FILE *fp = fopen(<span class="string">"d:\\data\\file1.txt"</span> , <span class="string">"w"</span>);</span><br><span class="line"><span class="keyword">if</span> (fp == NULL) &#123;</span><br><span class="line">    <span class="built_in">cerr</span> &lt;&lt; <span class="string">"文件打开失败\n"</span>;</span><br><span class="line">    <span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="(2)往文件中写入数据">(2)往文件中写入数据</h4><h4 id="(4)关闭文件">(4)关闭文件</h4><p>&emsp;&emsp;文件操作结束后需要执行关闭操作：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">flcose</span><span class="params">(FILE *stream)</span></span>;  <span class="comment">//关闭文件，返回0表示成功</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="基于类库的文件IO">基于类库的文件IO</h3><p>&emsp;&emsp;利用C++的I/O类库进行文件的输入/输出。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;fstream&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="(1)在文件中写入数据">(1)在文件中写入数据</h4><p>&emsp;&emsp;首先创建一个ofstream类的对象：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ofstream <span class="title">out_file</span><span class="params">(&lt;文件名&gt;, &lt;打开方式&gt;)</span></span>;  <span class="comment">//直接方式</span></span><br></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ofstream out_file;  <span class="comment">//间接方式</span></span><br><span class="line">out_file.open(&lt;文件名&gt;, &lt;打开方式&gt;);</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;其中&lt;文件名&gt;是对应文件的文件名，&lt;打开方式&gt;可以是：<br>&emsp;&emsp;·ios::out——含义与fopen的”w”相同<br>&emsp;&emsp;·ios:app——含义与fopen的”a”相同<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断文件是否成功打开</span></span><br><span class="line"><span class="keyword">if</span> (!out_file) &#123;  <span class="comment">//或out_file.fail() 或!out_file.is_open()</span></span><br><span class="line">    <span class="built_in">cerr</span> &lt;&lt; <span class="string">"文件打开失败\n"</span>;</span><br><span class="line">    <span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//文件成功打开后，可以使用插入操作符"&lt;&lt;"或者ofstream类的一些成员函数来往文件中写入数据。如：</span></span><br><span class="line">out_file &lt;&lt; x &lt;&lt; <span class="string">" "</span> &lt;&lt; y &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line"><span class="comment">//关闭文件</span></span><br><span class="line">out_file.close();</span><br></pre></td></tr></table></figure></p>
+<h4 id="(2)在文件中读取数据">(2)在文件中读取数据</h4><p>&emsp;&emsp;首先创建一个ifstream类的对象：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ifstream <span class="title">in_file</span><span class="params">(&lt;文件名&gt;, &lt;打开方式&gt;)</span></span>;  <span class="comment">//直接方式</span></span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;或<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifstream in_file;  <span class="comment">//间接方式</span></span><br><span class="line">in_file.open(&lt;文件名&gt;, &lt;打开方式&gt;);</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;其中&lt;文件名&gt;是对应文件的文件名，&lt;打开方式&gt;可以是：<br>&emsp;&emsp;·ios::in——含义与fopen的”r”相同<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//读取数据前需要对文件打开是否成功进行判断</span></span><br><span class="line"><span class="keyword">if</span> (!in_file) &#123;  <span class="comment">//或in_file.fail() 或!in_file.is_open()</span></span><br><span class="line">    <span class="built_in">cerr</span> &lt;&lt; <span class="string">"文件打开失败\n"</span>;</span><br><span class="line">    <span class="built_in">exit</span>(-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//文件打开成功后，可以使用抽取操作符"&gt;&gt;"或ifstream类的一些成员函数来进行读操作</span></span><br><span class="line">in_file &gt;&gt; x &gt;&gt; y;</span><br><span class="line"></span><br><span class="line"><span class="comment">//在文件中读取数据时常常需要判断文件是否已结束（文件中的数据被读完），判断文件是否结束可以调用ios类的成员函数eof来实现</span></span><br><span class="line"><span class="keyword">int</span> ios::eof();  <span class="comment">//该函数返回非0表示上一次读操作遇到文件末尾</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//关闭文件</span></span><br><span class="line">in_file.close();</span><br></pre></td></tr></table></figure></p>
+<h4 id="(3)既能读入又能输出数据">(3)既能读入又能输出数据</h4><p>&emsp;&emsp;首先创建一个fstream类的对象（fstream是类iostream的派生类），文件的打开方式如下：<br>&emsp;&emsp;·ios::in|ios::out——可以在文件任意位置写<br>&emsp;&emsp;·ios::in|ios::app——只能在文件末尾写</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/09/07/LeetCode-11-Container-With-most-Water/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">LeetCode 11 Container With Most Water</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="ciphertext" data-title="小练习：解密文件" data-url="http://yoursite.com/2015/09/23/ciphertext/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Luvina
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?672515e63bd6f633681d1735d2b9190a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+</body>
+</html>
