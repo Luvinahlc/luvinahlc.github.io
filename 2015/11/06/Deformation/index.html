@@ -3,18 +3,32 @@
 <head>
   <meta charset="utf-8">
   
-  <title>LeetCode 11 Container With Most Water | Luvinahlc&#39;s Blog</title>
+  <title>FFD(Free-Form Deformation)自由变形算法 | Luvinahlc&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题描述Given n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find tw">
+  <meta name="description" content="最近在调研关于网格变形的东西，最长提到的就是自由变形算法FFD，之前对FFD没有任何了解，稍微了解一些后，决定总结一番。但是内容还是比较简单的，只是一个初步的了解，后面对FFD的一些拓展算法也没有深入研究。
+FFD的步骤：(1)需变形的部分嵌入一个平行六面体中；(2)给平行六面体内部以及边界上的每个点分配一个固定的网格参数坐标；(3)通过移动控制点，引起物体形变。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode 11 Container With Most Water">
-<meta property="og:url" content="http://yoursite.com/2015/09/07/LeetCode-11-Container-With-most-Water/index.html">
+<meta property="og:title" content="FFD(Free-Form Deformation)自由变形算法">
+<meta property="og:url" content="http://yoursite.com/2015/11/06/Deformation/index.html">
 <meta property="og:site_name" content="Luvinahlc's Blog">
-<meta property="og:description" content="问题描述Given n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find tw">
-<meta property="og:updated_time" content="2015-09-07T09:38:25.540Z">
+<meta property="og:description" content="最近在调研关于网格变形的东西，最长提到的就是自由变形算法FFD，之前对FFD没有任何了解，稍微了解一些后，决定总结一番。但是内容还是比较简单的，只是一个初步的了解，后面对FFD的一些拓展算法也没有深入研究。
+FFD的步骤：(1)需变形的部分嵌入一个平行六面体中；(2)给平行六面体内部以及边界上的每个点分配一个固定的网格参数坐标；(3)通过移动控制点，引起物体形变。">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-8cf9fe763e3f5063.latex?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-09ea08c04d16b945.latex?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-7ccc9d1d35504ff9.latex?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-a27d64ab194812c2.latex?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-38c98dfa1839939a.latex?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-d6422b3f627fa680.latex?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-a1463129af794514.latex?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-12853b77f6834756.latex?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-5f9feb713f4e371b.latex?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-454aff5142e84848.latex?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-a4b433a79f5b017e.latex?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2015-11-06T04:01:44.531Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LeetCode 11 Container With Most Water">
-<meta name="twitter:description" content="问题描述Given n non-negative integers a1, a2, …, an, where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find tw">
+<meta name="twitter:title" content="FFD(Free-Form Deformation)自由变形算法">
+<meta name="twitter:description" content="最近在调研关于网格变形的东西，最长提到的就是自由变形算法FFD，之前对FFD没有任何了解，稍微了解一些后，决定总结一番。但是内容还是比较简单的，只是一个初步的了解，后面对FFD的一些拓展算法也没有深入研究。
+FFD的步骤：(1)需变形的部分嵌入一个平行六面体中；(2)给平行六面体内部以及边界上的每个点分配一个固定的网格参数坐标；(3)通过移动控制点，引起物体形变。">
   
     <link rel="alternative" href="/atom.xml" title="Luvinahlc&#39;s Blog" type="application/atom+xml">
   
@@ -195,11 +209,11 @@ var _hmt = _hmt || [];
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-LeetCode-11-Container-With-most-Water" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Deformation" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/09/07/LeetCode-11-Container-With-most-Water/" class="article-date">
-  	<time datetime="2015-09-07T09:26:33.000Z" itemprop="datePublished">2015-09-07</time>
+      <a href="/2015/11/06/Deformation/" class="article-date">
+  	<time datetime="2015-11-06T03:04:22.000Z" itemprop="datePublished">2015-11-06</time>
 </a>
     </div>
   
@@ -212,7 +226,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      LeetCode 11 Container With Most Water
+      FFD(Free-Form Deformation)自由变形算法
     </h1>
   
 
@@ -221,14 +235,10 @@ var _hmt = _hmt || [];
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自由变形算法/">自由变形算法</a></li></ul>
 	</div>
 
         
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Online-Judge/">Online Judge</a>
-	</div>
-
 
         <div class="clearfix"></div>
       </div>
@@ -236,13 +246,10 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="问题描述">问题描述</h1><p>Given <em>n</em> non-negative integers <em>a1</em>, <em>a2</em>, …, <em>an</em>, where each represents a point at coordinate (<em>i</em>, <em>ai</em>). <em>n</em> vertical lines are drawn such that the two endpoints of line <em>i</em> is at (<em>i</em>, <em>ai</em>) and (<em>i</em>, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.<br>Note: You may not slant the container.<br>以n条以(i, ai)和(i, 0)为端点的线段中找出两条，使得这两条线段和x轴构成的容器所能装下的水最多。<br><a id="more"></a></p>
-<h1 id="问题分析与思路">问题分析与思路</h1><p>&emsp;&emsp;装水的容量，实际就是求两个线段中最短的线段长度乘以线段之间的距离。<br>&emsp;&emsp;最简单最暴力的方法就是把每两个线段都拿出来进行计算装水的容量，然而这会使得计算量很大，超出了程序的时间限制。<br>&emsp;&emsp;容积即面积，它受长和高的影响，当长度减小时候，高必须增长才有可能提升面积，所以我们从长度最长时开始递减，然后寻找更高的线来更新候补。</p>
-<h1 id="问题求解">问题求解</h1><p>  C++的解决方案：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> maxArea = INT_MIN;</span><br><span class="line">		<span class="keyword">int</span> head = <span class="number">0</span>, tail = height.size() - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (head &lt; tail) &#123;</span><br><span class="line">			<span class="keyword">int</span> area = (height[head] &lt; height[tail] ? height[head] : height[tail]) * (tail - head);</span><br><span class="line">			<span class="keyword">if</span> (area &gt; maxArea)	maxArea = area;</span><br><span class="line">			<span class="keyword">if</span> (height[head] &lt;= height[tail]) &#123;</span><br><span class="line">				head++;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				tail--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> maxArea;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h1 id="相关知识点总结">相关知识点总结</h1><h2 id="条件操作符_?:">条件操作符 ?:</h2><p>&emsp;&emsp;条件操作符?:是一个三目操作符，其格式为cond?expr1 : expr2;<br>&emsp;&emsp;含义为如果cond的值为true或者非零，则运算结果为expr1，否则为expr2。</p>
-<h2 id="INT_MIN_INT_MAX">INT_MIN INT_MAX</h2><p>&emsp;&emsp;在标准头文件limits.h中定义如下：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">define</span> INT_MAX 2147483647  </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> INT_MIN (-INT_MAX - 1)</span></span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;这里没有简单地将INT_MIN赋值成-2147483647，是因为-2147483648对于编译器而言是个表达式，而2147483648对于32-bit整数是无法表示的，所以经过这个表达式的结果是未定义的。在GCC上直接写-2147483648后，编译器给出了警告，说结果是unsigned。<br>&emsp;&emsp;更多的关于INT_MIN的探讨可以参见这里的<a href="http://www.hardtoc.com/archives/119" target="_blank" rel="external">博客</a>.</p>
-<h1 id="啰嗦几句">啰嗦几句</h1><p>&emsp;&emsp;一个暑假都没有更新博客了，现在回到了学校才开始继续更新，做一些自己想做的事情。做做题看看书感觉生活很简单而美好。<br>&emsp;&emsp;最近几天在刷口译考试的题，感觉自己不一定能过了，做题的速度太慢了，50min6篇阅读理解，我有点hold不住，但是还是会去考的，但愿能过吧。</p>
+        <p>最近在调研关于网格变形的东西，最长提到的就是自由变形算法FFD，之前对FFD没有任何了解，稍微了解一些后，决定总结一番。<br>但是内容还是比较简单的，只是一个初步的了解，后面对FFD的一些拓展算法也没有深入研究。</p>
+<h1 id="FFD的步骤：">FFD的步骤：</h1><p>(1)需变形的部分嵌入一个平行六面体中；<br>(2)给平行六面体内部以及边界上的每个点分配一个固定的网格参数坐标；<br>(3)通过移动控制点，引起物体形变。<br><a id="more"></a><br>六面体均匀划分为L*M*N个平行六面体格子：每个格子的顶点即为控制点。控制点记为P(i,j,k)，i的范围为[0,L]，j的范围为[0,M]，k的范围为[0,N]。<br>因为控制点是均匀分布在六面体内部及其表面上，所以控制点满足：<br><img src="http://upload-images.jianshu.io/upload_images/584229-8cf9fe763e3f5063.latex?imageMogr2/auto-orient/strip" alt=""><br>其中<img src="http://upload-images.jianshu.io/upload_images/584229-09ea08c04d16b945.latex?imageMogr2/auto-orient/strip" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/584229-7ccc9d1d35504ff9.latex?imageMogr2/auto-orient/strip" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/584229-a27d64ab194812c2.latex?imageMogr2/auto-orient/strip" alt=""></p>
+<p>给平行六面体内部以及边界上每个点分配一个固定的网格参数坐标。<br>对于任何一个点Q，设其网格参数坐标(x,y,z)，则计算如下：<br><img src="http://upload-images.jianshu.io/upload_images/584229-38c98dfa1839939a.latex?imageMogr2/auto-orient/strip" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/584229-d6422b3f627fa680.latex?imageMogr2/auto-orient/strip" alt=""><br><img src="http://upload-images.jianshu.io/upload_images/584229-a1463129af794514.latex?imageMogr2/auto-orient/strip" alt=""><br>通过移动控制点带动物体发生形变，Q在形变之后的新坐标为：<br><img src="http://upload-images.jianshu.io/upload_images/584229-12853b77f6834756.latex?imageMogr2/auto-orient/strip" alt="Q(x,y,z)=\sum_{i=0}^{L}\sum_{j=0}^{M}\sum_{k=0}^{N}B_{i,L}(x)B_{j,M}(y)B_{k,N}(z)P(i,j,k)"><br>其中P(i,j,k)为控制点的新坐标。<br>Bernstein函数<br><img src="http://upload-images.jianshu.io/upload_images/584229-5f9feb713f4e371b.latex?imageMogr2/auto-orient/strip" alt="B_{i,L}(x)=\frac{L!}{i!(L-i)!}x^{i}(1-x)^{L-i}"><br><img src="http://upload-images.jianshu.io/upload_images/584229-454aff5142e84848.latex?imageMogr2/auto-orient/strip" alt="B_{j,M}(y)=\frac{M!}{j!(M-j)!}y^{j}(1-y)^{M-j}"><br><img src="http://upload-images.jianshu.io/upload_images/584229-a4b433a79f5b017e.latex?imageMogr2/auto-orient/strip" alt="B_{k,N}(z)=\frac{N!}{k!(N-k)!}z^{k}(1-z)^{N-k}"></p>
+<h1 id="PS:">PS:</h1><p>在写这篇博客的时候遇到了如何在博客中插入数学公式的问题，在<a href="http://www.ituring.com.cn/article/32403" target="_blank" rel="external">这里</a>找到了方法。</p>
 
       
     </div>
@@ -252,18 +259,9 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2015/09/23/ciphertext/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          小练习：解密文件
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/07/31/Paladin6/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">仙剑奇侠传六通关感受与分析（长长长文，含剧透，慎入）</div>
+    <a href="/2015/09/23/ciphertext/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">小练习：解密文件</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -292,7 +290,7 @@ var _hmt = _hmt || [];
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="LeetCode-11-Container-With-most-Water" data-title="LeetCode 11 Container With Most Water" data-url="http://yoursite.com/2015/09/07/LeetCode-11-Container-With-most-Water/"></div>
+	<div class="ds-thread" data-thread-key="Deformation" data-title="FFD(Free-Form Deformation)自由变形算法" data-url="http://yoursite.com/2015/11/06/Deformation/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
