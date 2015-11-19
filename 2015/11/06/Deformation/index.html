@@ -24,7 +24,7 @@ FFD的步骤：(1)需变形的部分嵌入一个平行六面体中；(2)给平�
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-5f9feb713f4e371b.latex?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-454aff5142e84848.latex?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/584229-a4b433a79f5b017e.latex?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2015-11-06T04:13:19.547Z">
+<meta property="og:updated_time" content="2015-11-19T09:05:05.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FFD(Free-Form Deformation)自由变形算法">
 <meta name="twitter:description" content="最近在调研关于网格变形的东西，最长提到的就是自由变形算法FFD，之前对FFD没有任何了解，稍微了解一些后，决定总结一番。但是内容还是比较简单的，只是一个初步的了解，后面对FFD的一些拓展算法也没有深入研究。
@@ -139,7 +139,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Exercise/" style="font-size: 10px;">Exercise</a> <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/仙剑奇侠传6/" style="font-size: 10px;">仙剑奇侠传6</a> <a href="/tags/关联容器/" style="font-size: 10px;">关联容器</a> <a href="/tags/单链表/" style="font-size: 10px;">单链表</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/数据仓库/" style="font-size: 10px;">数据仓库</a> <a href="/tags/杂絮/" style="font-size: 10px;">杂絮</a> <a href="/tags/自由变形算法/" style="font-size: 10px;">自由变形算法</a>
+						<a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Exercise/" style="font-size: 10px;">Exercise</a> <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/仙剑奇侠传6/" style="font-size: 10px;">仙剑奇侠传6</a> <a href="/tags/关联容器/" style="font-size: 10px;">关联容器</a> <a href="/tags/单链表/" style="font-size: 10px;">单链表</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/数据仓库/" style="font-size: 10px;">数据仓库</a> <a href="/tags/杂絮/" style="font-size: 10px;">杂絮</a> <a href="/tags/自由变形算法/" style="font-size: 10px;">自由变形算法</a>
 					</div>
 				</section>
 				
@@ -239,6 +239,10 @@ var _hmt = _hmt || [];
 	</div>
 
         
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+	</div>
+
 
         <div class="clearfix"></div>
       </div>
@@ -247,7 +251,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近在调研关于网格变形的东西，最长提到的就是自由变形算法FFD，之前对FFD没有任何了解，稍微了解一些后，决定总结一番。<br>但是内容还是比较简单的，只是一个初步的了解，后面对FFD的一些拓展算法也没有深入研究。</p>
-<h1 id="FFD的步骤：">FFD的步骤：</h1><p>(1)需变形的部分嵌入一个平行六面体中；<br>(2)给平行六面体内部以及边界上的每个点分配一个固定的网格参数坐标；<br>(3)通过移动控制点，引起物体形变。<br><a id="more"></a><br>六面体均匀划分为L*M*N个平行六面体格子：每个格子的顶点即为控制点。控制点记为P(i,j,k)，i的范围为[0,L]，j的范围为[0,M]，k的范围为[0,N]。<br>因为控制点是均匀分布在六面体内部及其表面上，所以控制点满足：<br><img src="http://upload-images.jianshu.io/upload_images/584229-8cf9fe763e3f5063.latex?imageMogr2/auto-orient/strip" alt="1"><br>其中<br><img src="http://upload-images.jianshu.io/upload_images/584229-2c55094c86660651.latex?imageMogr2/auto-orient/strip" alt="X=P(L,0,0)-P(0,0,0)"><br><img src="http://upload-images.jianshu.io/upload_images/584229-685295aa5c5e338b.latex?imageMogr2/auto-orient/strip" alt="Y=P(0,M,0)-P(0,0,0)"><br><img src="http://upload-images.jianshu.io/upload_images/584229-6b1d9ab155031a38.latex?imageMogr2/auto-orient/strip" alt="Z=P(0,0,N)-P(0,0,0)"></p>
+<h1 id="FFD的步骤：">FFD的步骤：</h1><p>(1)需变形的部分嵌入一个平行六面体中；<br>(2)给平行六面体内部以及边界上的每个点分配一个固定的网格参数坐标；<br>(3)通过移动控制点，引起物体形变。<br><a id="more"></a><br>六面体均匀划分为L*M*N个平行六面体格子：每个格子的顶点即为控制点。控制点记为P(i,j,k)，i的范围为[0,L]，j的范围为[0,M]，k的范围为[0,N]。<br>因为控制点是均匀分布在六面体内部及其表面上，所以控制点满足：<br><img src="http://upload-images.jianshu.io/upload_images/584229-8cf9fe763e3f5063.latex?imageMogr2/auto-orient/strip" alt="P(i,j,k)=p(0,0,0)+\frac{i}{L}X+\frac{j}{M}Y+\frac{k}{N}Z"><br>其中<br><img src="http://upload-images.jianshu.io/upload_images/584229-2c55094c86660651.latex?imageMogr2/auto-orient/strip" alt="X=P(L,0,0)-P(0,0,0)"><br><img src="http://upload-images.jianshu.io/upload_images/584229-685295aa5c5e338b.latex?imageMogr2/auto-orient/strip" alt="Y=P(0,M,0)-P(0,0,0)"><br><img src="http://upload-images.jianshu.io/upload_images/584229-6b1d9ab155031a38.latex?imageMogr2/auto-orient/strip" alt="Z=P(0,0,N)-P(0,0,0)"></p>
 <p>给平行六面体内部以及边界上每个点分配一个固定的网格参数坐标。<br>对于任何一个点Q，设其网格参数坐标(x,y,z)，则计算如下：<br><img src="http://upload-images.jianshu.io/upload_images/584229-dfd1789547f72e58.latex?imageMogr2/auto-orient/strip" alt="x=\frac{(Y\times Z)\cdot (Q-P(0,0,0))}{(Y\times Z)\cdot X}"><br><img src="http://upload-images.jianshu.io/upload_images/584229-4dcce770a0d61cdf.latex?imageMogr2/auto-orient/strip" alt="y=\frac{(X\times Z)\cdot (Q-P(0,0,0))}{(X\times Z)\cdot Y}"><br><img src="http://upload-images.jianshu.io/upload_images/584229-ea523522b0ac9484.latex?imageMogr2/auto-orient/strip" alt="z=\frac{(X\times Y)\cdot (Q-P(0,0,0))}{(X\times Y)\cdot Z}"><br>通过移动控制点带动物体发生形变，Q在形变之后的新坐标为：<br><img src="http://upload-images.jianshu.io/upload_images/584229-12853b77f6834756.latex?imageMogr2/auto-orient/strip" alt="Q(x,y,z)=\sum_{i=0}^{L}\sum_{j=0}^{M}\sum_{k=0}^{N}B_{i,L}(x)B_{j,M}(y)B_{k,N}(z)P(i,j,k)"><br>其中P(i,j,k)为控制点的新坐标。<br>Bernstein函数<br><img src="http://upload-images.jianshu.io/upload_images/584229-5f9feb713f4e371b.latex?imageMogr2/auto-orient/strip" alt="B_{i,L}(x)=\frac{L!}{i!(L-i)!}x^{i}(1-x)^{L-i}"><br><img src="http://upload-images.jianshu.io/upload_images/584229-454aff5142e84848.latex?imageMogr2/auto-orient/strip" alt="B_{j,M}(y)=\frac{M!}{j!(M-j)!}y^{j}(1-y)^{M-j}"><br><img src="http://upload-images.jianshu.io/upload_images/584229-a4b433a79f5b017e.latex?imageMogr2/auto-orient/strip" alt="B_{k,N}(z)=\frac{N!}{k!(N-k)!}z^{k}(1-z)^{N-k}"></p>
 <h1 id="PS:">PS:</h1><p>在写这篇博客的时候遇到了如何在博客中插入数学公式的问题，在<a href="http://www.ituring.com.cn/article/32403" target="_blank" rel="external">这里</a>找到了方法。</p>
 
@@ -258,6 +262,15 @@ var _hmt = _hmt || [];
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/11/19/cast-CPP/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          C++中类型转换相关的关键字
+        
+      </div>
+    </a>
   
   
     <a href="/2015/09/23/ciphertext/" id="article-nav-older" class="article-nav-link-wrap">

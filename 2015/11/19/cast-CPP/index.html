@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>C++中类型转换相关的关键字 | Luvinahlc&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Q：在C++中，有哪4个与类型转换相关的关键字？这些关键字有什么特点，应该在什么场合下使用？C++中与类型转换相关的四个关键字有：const_cast、static_cast、dynamic_cast、reinterpret_cast。类型转换（Type Cast）C风格的类型转换的是强制类型转换，在以前的编程中我也是这么用的。形如：TYPE b = (TYPE)a;C++则是提供了4种类型转换符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++中类型转换相关的关键字">
+<meta property="og:url" content="http://yoursite.com/2015/11/19/cast-CPP/index.html">
+<meta property="og:site_name" content="Luvinahlc's Blog">
+<meta property="og:description" content="Q：在C++中，有哪4个与类型转换相关的关键字？这些关键字有什么特点，应该在什么场合下使用？C++中与类型转换相关的四个关键字有：const_cast、static_cast、dynamic_cast、reinterpret_cast。类型转换（Type Cast）C风格的类型转换的是强制类型转换，在以前的编程中我也是这么用的。形如：TYPE b = (TYPE)a;C++则是提供了4种类型转换符">
+<meta property="og:updated_time" content="2015-11-19T09:04:35.302Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++中类型转换相关的关键字">
+<meta name="twitter:description" content="Q：在C++中，有哪4个与类型转换相关的关键字？这些关键字有什么特点，应该在什么场合下使用？C++中与类型转换相关的四个关键字有：const_cast、static_cast、dynamic_cast、reinterpret_cast。类型转换（Type Cast）C风格的类型转换的是强制类型转换，在以前的编程中我也是这么用的。形如：TYPE b = (TYPE)a;C++则是提供了4种类型转换符">
+  
+    <link rel="alternative" href="/atom.xml" title="Luvinahlc&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+  
+<script type="text/javascript">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?672515e63bd6f633681d1735d2b9190a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img lazy-src="http://img5q.duitang.com/uploads/item/201410/02/20141002004718_cNaAM.jpeg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Luvina</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories">分类</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Luvinahlc" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/u/1753184915?wvr=3.6&lf=reg" title="weibo">weibo</a>
+					        
+								<a class="facebook" target="_blank" href="http://facebook.com/Luvinahlc" title="facebook">facebook</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Exercise/" style="font-size: 10px;">Exercise</a> <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/仙剑奇侠传6/" style="font-size: 10px;">仙剑奇侠传6</a> <a href="/tags/关联容器/" style="font-size: 10px;">关联容器</a> <a href="/tags/单链表/" style="font-size: 10px;">单链表</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/数据仓库/" style="font-size: 10px;">数据仓库</a> <a href="/tags/杂絮/" style="font-size: 10px;">杂絮</a> <a href="/tags/自由变形算法/" style="font-size: 10px;">自由变形算法</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://eclipseflower.github.io/">EclipseFlower&#39;s Blog</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://6carol6.github.io/">Carolz&#39;s Blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">M.Sc. Student of Department of Computer Science and Technology in Nanjing University</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Luvina</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://img5q.duitang.com/uploads/item/201410/02/20141002004718_cNaAM.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Luvina</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories">分类</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Luvinahlc" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/u/1753184915?wvr=3.6&lf=reg" title="weibo">weibo</a>
+			        
+						<a class="facebook" target="_blank" href="http://facebook.com/Luvinahlc" title="facebook">facebook</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-cast-CPP" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/11/19/cast-CPP/" class="article-date">
+  	<time datetime="2015-11-19T09:02:09.000Z" itemprop="datePublished">2015-11-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C++中类型转换相关的关键字
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C/">C++</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Q：在C++中，有哪4个与类型转换相关的关键字？这些关键字有什么特点，应该在什么场合下使用？<br>C++中与类型转换相关的四个关键字有：const_cast、static_cast、dynamic_cast、reinterpret_cast。<br>类型转换（Type Cast）<br>C风格的类型转换的是强制类型转换，在以前的编程中我也是这么用的。形如：<br>TYPE b = (TYPE)a;<br>C++则是提供了4种类型转换符来应对不同场合的应用，这里对一些博客的内容进行总结。<br><a id="more"></a></p>
+<h1 id="1、const_cast_常量转换">1、const_cast 常量转换</h1><p>用来修改类型的const或volatile属性，也就将是常型（const）转换为非常型，将易变型（volatile）转换为非易变型。如果用于其他类型的转换，一般会产生编译错误。<br>使用const_cast会消除被转换类型的const特性，而且只有const类型的变量才能使用。比如，有时候有的函数的形参类型为非const类型，那么如果你要将一个const类型的参数传入就会报错，在这种情况下需要先使用const_cast转化一下。<br>常量指针被转化成非常量指针，并且仍然指向原来的对象；<br>常量引用被转换成非常量引用，并且仍然指向原来的对象；<br>常量对象被转换成非常量对象。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> B &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">　　<span class="keyword">int</span> Num;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">　　<span class="keyword">const</span> B b1;</span><br><span class="line">　　b1.Num = <span class="number">100</span>; <span class="comment">//comile error</span></span><br><span class="line">　　B b2 = <span class="keyword">const_cast</span>(b1);</span><br><span class="line">　　b2.Num = <span class="number">200</span>; <span class="comment">//fine</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码编译时会报错，因为b1是一个常量对象，不能对它进行改变;使用const_cast把它转换成一个常量对象，就可以对它的数据成员任意改变。</p>
+<h1 id="2、static_cast_静态转换">2、static_cast 静态转换</h1><p>类似于C风格的强制转换，用于：<br>　　1. 基类和子类之间转换：其中子类指针转换成父类指针是安全的;但父类指针转换成子类指针是不安全的。(基类和子类之间的动态类型转换建议用dynamic_cast)<br>　　2. 基本数据类型转换。enum, struct, int, char, float等。static_cast不能进行无关类型(如非基类和子类)指针之间的转换。<br>　　3. 把空指针转换成目标类型的空指针。<br>　　4. 把任何类型的表达式转换成void类型。<br>　　5. static_cast不能去掉类型的const、volitale属性(用const_cast)。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> d = <span class="number">3.14159265</span>;</span><br><span class="line"><span class="keyword">int</span> i = <span class="keyword">static_cast</span>(d);  <span class="comment">//基本数据类型转换</span></span><br><span class="line"><span class="keyword">int</span> i = <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(d);  <span class="comment">//基本数据类型转换</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> *pn = &amp;n;</span><br><span class="line"><span class="keyword">double</span> *d = <span class="keyword">static_cast</span>&lt;<span class="keyword">double</span> *&gt;(&amp;n) <span class="comment">//无关类型指针转换，编译错误</span></span><br><span class="line"><span class="keyword">void</span> *p = <span class="keyword">static_cast</span>&lt;<span class="keyword">void</span> *&gt;(pn); <span class="comment">//任意类型转换成void类型</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="3、dynamic_cast_动态转换">3、dynamic_cast 动态转换</h1><p>它是一种作运行时（run-time）检测的类型转换。它可以将基类类型的指针或引用安全地转换为派生类型的指针或引用。当具有基类的引用或指针，但需要执行不是基类组成部分的派生类操作的时候，需要动态的强制类型转换。通常，从基类指针获得派生类行为最好的方法是通过虚函数。当使用虚函数的时候，编译器自动根据对象的实际类型选择正确的函数。但是，在某些情况下，不可能使用虚函数。这时候就需要使用dynamic_cast关键字了。但是，能用虚函数还是用虚函数最好。</p>
+<p>有条件转换，动态类型转换，运行时类型安全检查(转换失败返回NULL)：<br>　　1. 安全的基类和子类之间转换。<br>　　2. 必须要有虚函数。<br>　　3. 相同基类不同子类之间的交叉转换,但结果是NULL。<br>　　4. 在类层次间进行上行转换时，dynamic_cast和static_cast的效果是一样的。<br>　　5. 在进行下行转换时，dynamic_cast具有类型检查的功能，比static_cast更安全。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> A&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> Num;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> B:<span class="keyword">public</span> A&#123; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> C:<span class="keyword">public</span> A&#123;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">      <span class="keyword">char</span> *Name[<span class="number">100</span>];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> D:<span class="keyword">public</span> A&#123;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(A *pa)</span></span>&#123;</span><br><span class="line">    C *pa1 = <span class="keyword">static_cast</span>&lt;C *&gt;(pa);  <span class="comment">//静态类型转换，正确但不推荐</span></span><br><span class="line">    C *pa2 = <span class="keyword">dynamic_cast</span>&lt;C *&gt;(pa);  <span class="comment">//动态类型转换，正确</span></span><br><span class="line"><span class="comment">/*</span><br><span class="line">如果pa指向一个C类型的对象，pa1和pa2是一样的，并且对这两个指针执行C类型的任何操作都是安全的；</span><br><span class="line">但是，如果pa指向的是一个A类型的对象，那么pa1将是一个指向该对象的指针，对它进行C类型的操作将是不安全的（如访问Name），而pa2将是一个空指针。    </span><br><span class="line">另外要注意：A要有虚函数，否则会编译出错；static_cast则没有这个限制。</span><br><span class="line">*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span>&#123;    </span><br><span class="line">    B *pb = <span class="keyword">new</span> B;    </span><br><span class="line">    pb-&gt;Num = <span class="number">100</span>;    </span><br><span class="line">    D *pd1 = <span class="keyword">static_cast</span>&lt;D *&gt;(pb); <span class="comment">//compile error，使用static_cast进行转换是不被允许的</span></span><br><span class="line">    D *pd2 = <span class="keyword">dynamic_cast</span>&lt;D *&gt;(pb); <span class="comment">//pd2 is NULL，使用dynamic_cast转换则是允许的，结果是空指针</span></span><br><span class="line">    <span class="keyword">delete</span> pb;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="4、reinterpreter_cast_重解释转换">4、reinterpreter_cast 重解释转换</h1><p>如果被转换的两种类型之间不相关，比如int指针转换为char指针，就要使用reinterpret_cast这个关键字。<br>　　1. 转换的类型必须是一个指针、引用、算术类型、函数指针或者成员指针。<br>　　2. 在比特位级别上进行转换。它可以把一个指针转换成一个整数，也可以把一个整数转换成一个指针(先把一个指针转换成一个整数，在把该整数转换成原类型的指针，还可以得到原先的指针值)。但不能将非32bit的实例转成指针。<br>　　3. 最普通的用途就是在函数指针类型之间进行转换。<br>　　4. 平台移植性比较差。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> A &#123;&#125;;</span><br><span class="line"><span class="keyword">class</span> B &#123;&#125;;</span><br><span class="line">A * a = <span class="keyword">new</span> A;</span><br><span class="line">B * b = <span class="keyword">reinterpret_cast</span>(a);</span><br></pre></td></tr></table></figure></p>
+<h1 id="总结">总结</h1><p>　　去const属性用const_cast。<br>　　基本类型转换用static_cast。<br>　　多态类之间的类型转换用daynamic_cast。<br>　　不同类型的指针类型转换用reinterpreter_cast。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/11/06/Deformation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">FFD(Free-Form Deformation)自由变形算法</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="cast-CPP" data-title="C++中类型转换相关的关键字" data-url="http://yoursite.com/2015/11/19/cast-CPP/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 Luvina
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/mobile.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?672515e63bd6f633681d1735d2b9190a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  </div>
+</body>
+</html>
