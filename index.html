@@ -110,7 +110,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/APP/" style="font-size: 10px;">APP</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Exercise/" style="font-size: 10px;">Exercise</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a> <a href="/tags/OpenMesh/" style="font-size: 10px;">OpenMesh</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/仙剑奇侠传6/" style="font-size: 10px;">仙剑奇侠传6</a> <a href="/tags/关联容器/" style="font-size: 10px;">关联容器</a> <a href="/tags/单链表/" style="font-size: 10px;">单链表</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/数据仓库/" style="font-size: 10px;">数据仓库</a> <a href="/tags/杂絮/" style="font-size: 10px;">杂絮</a> <a href="/tags/自由变形算法/" style="font-size: 10px;">自由变形算法</a>
+						<a href="/tags/APP/" style="font-size: 10px;">APP</a> <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Exercise/" style="font-size: 10px;">Exercise</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java常量池/" style="font-size: 10px;">Java常量池</a> <a href="/tags/LeetCode/" style="font-size: 20px;">LeetCode</a> <a href="/tags/Memory/" style="font-size: 10px;">Memory</a> <a href="/tags/OpenMesh/" style="font-size: 10px;">OpenMesh</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/仙剑奇侠传6/" style="font-size: 10px;">仙剑奇侠传6</a> <a href="/tags/关联容器/" style="font-size: 10px;">关联容器</a> <a href="/tags/单链表/" style="font-size: 10px;">单链表</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/数据仓库/" style="font-size: 10px;">数据仓库</a> <a href="/tags/杂絮/" style="font-size: 10px;">杂絮</a> <a href="/tags/自由变形算法/" style="font-size: 10px;">自由变形算法</a>
 					</div>
 				</section>
 				
@@ -180,6 +180,116 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-JVM-Memory-Area" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/11/JVM-Memory-Area/" class="article-date">
+  	<time datetime="2016-04-11T03:01:35.000Z" itemprop="datePublished">2016-04-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/11/JVM-Memory-Area/">JVM Memory Area</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java虚拟机所管理的内存将会包括以下几个运行时数据区域：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运行时数据区域</th>
+<th style="text-align:center">英文</th>
+<th style="text-align:center">备注</th>
+<th style="text-align:center">是否线程共享</th>
+<th style="text-align:center">是否出现异常</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">程序计数器</td>
+<td style="text-align:center">Program Counter Register</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">线程私有</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">Java虚拟机栈</td>
+<td style="text-align:center">JavaVirtual Machine Stacks</td>
+<td style="text-align:center">局部变量表、操作数栈、动态链接、方法出口等</td>
+<td style="text-align:center">线程私有</td>
+<td style="text-align:center">StackOverflowError异常、OutOfMemoryError异常</td>
+</tr>
+<tr>
+<td style="text-align:center">本地方法栈</td>
+<td style="text-align:center">Native Method Stack</td>
+<td style="text-align:center">为Native方法服务</td>
+<td style="text-align:center">线程私有</td>
+<td style="text-align:center">StackOverflowError异常、OutOfMemoryError异常</td>
+</tr>
+<tr>
+<td style="text-align:center">Java堆</td>
+<td style="text-align:center">Java Heap</td>
+<td style="text-align:center">数组和对象实例</td>
+<td style="text-align:center">线程共享</td>
+<td style="text-align:center">OutMemoryError异常</td>
+</tr>
+<tr>
+<td style="text-align:center">方法区</td>
+<td style="text-align:center">Method Area（Non-Heap）</td>
+<td style="text-align:center">已被虚拟机加载的类信息、常量、静态变量、即时编译期编译后的代码等</td>
+<td style="text-align:center">线程共享</td>
+<td style="text-align:center">OutMemoryError异常</td>
+</tr>
+</tbody>
+</table>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Memory/">Memory</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/04/11/JVM-Memory-Area/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+  
+
+  
     <article id="post-constant-pool-in-Java" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -217,7 +327,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java常量池/">Java常量池</a></li></ul>
 	</div>
 
       
@@ -722,68 +832,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/06/15/datawarehouse/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-  
-
-  
-    <article id="post-LeetCode-3-Longest-Substring-Without-Repeating-Characters" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/06/03/LeetCode-3-Longest-Substring-Without-Repeating-Characters/" class="article-date">
-  	<time datetime="2015-06-03T13:52:07.000Z" itemprop="datePublished">2015-06-03</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/03/LeetCode-3-Longest-Substring-Without-Repeating-Characters/">LeetCode 3 Longest Substring Without Repeating Characters</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题描述">问题描述</h1><p>Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for “abcabcbb” is “abc”, which the length is 3. For “bbbbb” the longest substring is “b”, with the length of 1.<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符串/">字符串</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/Online-Judge/">Online Judge</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/06/03/LeetCode-3-Longest-Substring-Without-Repeating-Characters/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>
